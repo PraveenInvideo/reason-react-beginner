@@ -3,63 +3,24 @@
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Belt_Array = require("bs-platform/lib/js/belt_Array.js");
+var LeftModule$ReasonReactExamples = require("./LeftModule.bs.js");
 
 function LeftPanel(Props) {
   var leftPanelListItemClick = Props.leftPanelListItemClick;
-  var leftPanelItems = [
-    {
-      id: 1,
-      title: "Intro",
-      panelType: /* INTRO */0
-    },
-    {
-      id: 2,
-      title: "Components",
-      panelType: /* COMPONENTS */1
-    },
-    {
-      id: 3,
-      title: "JSX",
-      panelType: /* JSX */2
-    },
-    {
-      id: 4,
-      title: "Event",
-      panelType: /* EVENT */3
-    },
-    {
-      id: 5,
-      title: "Style",
-      panelType: /* STYLE */4
-    },
-    {
-      id: 6,
-      title: "Router",
-      panelType: /* ROUTER */5
-    }
-  ];
-  var leftPanelMainDivStyle = {
-    backgroundColor: "#303030",
-    height: "100%",
-    width: "30%"
-  };
-  var listItemStyle = {
-    backgroundColor: "white",
-    color: "black",
-    cursor: "pointer",
-    display: "flex",
-    height: "40px",
-    margin: "5px 10px",
-    padding: "0 10px",
-    borderRadius: "5px",
-    alignItems: "center"
-  };
+  var leftPanelItems = LeftModule$ReasonReactExamples.LeftModule.fetchLeftPanelItems(undefined);
   return React.createElement("div", {
-              style: leftPanelMainDivStyle
-            }, Belt_Array.map(leftPanelItems, (function (item) {
+              style: LeftModule$ReasonReactExamples.LeftCSSModule.fetchMainDivStyle(undefined)
+            }, React.createElement("div", {
+                  style: LeftModule$ReasonReactExamples.LeftCSSModule.fetchSearchDivStyle(undefined)
+                }, React.createElement("input", {
+                      style: LeftModule$ReasonReactExamples.LeftCSSModule.fetchSearchInputBarStyle(undefined),
+                      value: "Search ..."
+                    })), React.createElement("span", {
+                  style: LeftModule$ReasonReactExamples.LeftCSSModule.fetchSpanStyle(undefined)
+                }, "Getting Started"), Belt_Array.map(leftPanelItems, (function (item) {
                     return React.createElement("div", {
                                 key: String(item.id),
-                                style: listItemStyle,
+                                style: LeftModule$ReasonReactExamples.LeftCSSModule.fetchListItemStyle(undefined),
                                 onClick: (function (__x) {
                                     return Curry._1(leftPanelListItemClick, item);
                                   })
